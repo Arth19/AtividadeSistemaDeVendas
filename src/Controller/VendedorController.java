@@ -15,7 +15,6 @@ public class VendedorController {
             return true;
         }
     }
-
     public Collection<Vendedor> listaVendedores(){
         if(vendedores.isEmpty()==true){
             return null;
