@@ -8,7 +8,7 @@ public class VendedorController {
     private static Collection<Vendedor> vendedores;
 
     public boolean cadastraVendedor(Vendedor v){
-        if(v == null || vendedores.equals(v) || vendedores.contains(v)){
+        if(v == null || vendedores.equals(v)  || vendedores.contains(v)){
             return false;
         }else{
             vendedores.add(v);
