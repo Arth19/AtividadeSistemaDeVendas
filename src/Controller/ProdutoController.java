@@ -5,7 +5,7 @@ import Model.Produto;
 import java.util.Set;
 
 public class ProdutoController {
-    Set<Produto> produtos;
+    private static Set<Produto> produtos;
 
     public boolean cadastrarProduto(Produto p){
         if(p==null || produtos.contains(p) || produtos.equals(p)){

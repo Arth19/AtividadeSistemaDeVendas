@@ -5,7 +5,7 @@ import Model.Venda;
 import java.util.Set;
 
 public class VendaController {
-    Set<Venda> vendas;
+    private static Set<Venda> vendas;
 
     public boolean registrarVenda(Venda v){
         if (v==null || vendas.contains(v) || vendas.equals(v)){
