@@ -4,7 +4,7 @@ import Model.Cliente;
 
 import java.util.Set;
 
-public abstract class ClienteController {
+public class ClienteController {
     private static Set<Cliente> clientes;
 
 
@@ -32,5 +32,16 @@ public abstract class ClienteController {
         }else{
             return clientes;
         }
+    }
+    public static Cliente buscaCliente(String email){
+        Cliente d = null;
+        for(Cliente c: clientes){
+            if (c.getEmail().equalsIgnoreCase(email)){
+                 d = c;
+            } else{
+                 d = null;
+            }
+        }
+        return d;
     }
 }

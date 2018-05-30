@@ -10,6 +10,14 @@ public class Venda {
     private Cliente cliente;
     private Vendedor vendedor;
 
+    public Venda(Date dataDaVenda, Produto produto, int qtd, Cliente cliente, Vendedor vendedor) {
+        this.dataDaVenda = dataDaVenda;
+        this.produto = produto;
+        this.qtd = qtd;
+        this.cliente = cliente;
+        this.vendedor = vendedor;
+    }
+
     public Date getDataDaVenda() {
         return dataDaVenda;
     }

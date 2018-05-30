@@ -7,7 +7,7 @@ import java.util.Set;
 public class VendedorController {
     private static Set<Vendedor> vendedores;
 
-    public boolean cadastraVendedor(Vendedor v){
+    public static boolean cadastraVendedor(Vendedor v){
         if(v == null ||  vendedores.contains(v)){
             return false;
         }else{
@@ -15,7 +15,7 @@ public class VendedorController {
             return true;
         }
     }
-    public boolean removerVendedor(Vendedor v){
+    public static boolean removerVendedor(Vendedor v){
         if(vendedores.contains(v)){
             vendedores.remove(v);
             return true;
@@ -24,12 +24,24 @@ public class VendedorController {
         }
     }
 
-    public Set<Vendedor> listaVendedores(){
+    public static Set<Vendedor> listaVendedores(){
         if(vendedores.isEmpty()==true){
             vendedores = null;
             return vendedores;
         } else{
             return vendedores;
         }
+    }
+
+    public static Vendedor buscaVendedor(String emailVend) {
+        Vendedor vendedor=null;
+        for(Vendedor v: vendedores){
+            if(v.getEmail().equalsIgnoreCase(emailVend)){
+                vendedor=v;
+            }else{
+                vendedor=null;
+            }
+        }
+        return vendedor;
     }
 }

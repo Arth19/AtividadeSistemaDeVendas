@@ -7,7 +7,7 @@ import java.util.Set;
 public class VendaController {
     private static Set<Venda> vendas;
 
-    public boolean registrarVenda(Venda v){
+    public static boolean registrarVenda(Venda v){
         if (v==null || vendas.contains(v) || vendas.equals(v)){
             return false;
         }else{
@@ -16,7 +16,7 @@ public class VendaController {
         }
     }
 
-    public Set<Venda> relatorioVendas(){
+    public static Set<Venda> relatorioVendas(){
         if(vendas.isEmpty()==true){
             vendas = null;
             return vendas;

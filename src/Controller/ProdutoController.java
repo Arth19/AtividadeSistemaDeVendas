@@ -7,7 +7,7 @@ import java.util.Set;
 public class ProdutoController {
     private static Set<Produto> produtos;
 
-    public boolean cadastrarProduto(Produto p){
+    public static boolean cadastrarProduto(Produto p){
         if(p==null || produtos.contains(p) || produtos.equals(p)){
             produtos.add(p);
             return false;
@@ -18,11 +18,11 @@ public class ProdutoController {
             return true;
         }
     }
-    public boolean removerProduto(Produto p){
+    public static boolean removerProduto(Produto p){
 
         if(produtos.contains(p)){
             int novo = p.getEstoque();
-            novo++;
+            novo--;
             p.setEstoque(novo);
             return true;
         }else{
@@ -30,7 +30,7 @@ public class ProdutoController {
         }
 
     }
-    public Set<Produto> listarProdutos(){
+    public static Set<Produto> listarProdutos(){
         if(produtos.isEmpty() == true){
             produtos = null;
             return produtos;
@@ -40,4 +40,15 @@ public class ProdutoController {
     }
 
 
+    public static Produto buscaProduto(String nomeProd) {
+        Produto prod = null;
+        for (Produto p: produtos){
+            if(p.getNome().equalsIgnoreCase(nomeProd)){
+                prod = p;
+            }else{
+                prod = null;
+            }
+        }
+        return prod;
+    }
 }

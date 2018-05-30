@@ -4,19 +4,16 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Vendedor extends Pessoa {
-    private String matricula;
+    private int matricula = hashCode();
     private Date dataContratacao;
 
-    public Vendedor(String nome, String cpf, String senha, Date dataNasc, String matricula, Date dataContratacao) {
+    public Vendedor(String nome, String email, String senha, Date dataNasc, Date dataContratacao) {
 
-        super(nome, cpf, senha, dataNasc);
-        this.matricula = matricula;
+        super(nome, email, senha, dataNasc);
         this.dataContratacao = dataContratacao;
     }
 
-    public String getMatricula(){ return matricula; }
-
-    public void setMatricula(String matricula){ this.matricula = matricula; }
+    public int getMatricula(){ return matricula; }
 
     public Date getDataContratacao(){ return dataContratacao; }
 
@@ -30,12 +27,12 @@ public class Vendedor extends Pessoa {
             return false;
         }
         Vendedor vendedor = (Vendedor) o;
-        return super.equals(vendedor) && vendedor.getMatricula().equalsIgnoreCase(getMatricula());
+        return super.equals(vendedor) && (vendedor.getMatricula() == this.getMatricula());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEmail(), getDataNasc()) * 11 * super.hashCode();
+        return Objects.hash(getDataContratacao()) * 11 * super.hashCode();
     }
 
     @Override
