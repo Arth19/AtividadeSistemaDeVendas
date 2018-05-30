@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Cliente extends Pessoa {
     private double saldo = 0.0;
 
-    public Cliente(String nome, String cpf, String senha, Date dataNasc) {
-        super(nome, cpf, senha, dataNasc);
+    public Cliente(String nome, String email, String senha, Date dataNasc) {
+        super(nome, email, senha, dataNasc);
     }
 
     public double getSaldo() {
@@ -30,12 +30,17 @@ public class Cliente extends Pessoa {
 
         Cliente cliente = (Cliente) o;
 
-        return cliente.getCpf().equalsIgnoreCase(getCpf());
+        return cliente.getEmail().equalsIgnoreCase(getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCpf(), getDataNasc(), getNome()) *  7;
+        return super.hashCode() *  7;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente: " + "/n" +
+                super.toString();
+    }
 }

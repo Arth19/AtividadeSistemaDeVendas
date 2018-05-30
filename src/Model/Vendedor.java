@@ -4,20 +4,23 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Vendedor extends Pessoa {
-    private double saldoVenda = 0.0;
+    private String matricula;
+    private Date dataContratacao;
 
-    public Vendedor(String nome, String cpf, String senha, Date dataNasc) {
+    public Vendedor(String nome, String cpf, String senha, Date dataNasc, String matricula, Date dataContratacao) {
+
         super(nome, cpf, senha, dataNasc);
+        this.matricula = matricula;
+        this.dataContratacao = dataContratacao;
     }
 
-    public double getSaldoVenda() {
-        return saldoVenda;
-    }
+    public String getMatricula(){ return matricula; }
 
-    public void setSaldoVenda(double saldoVenda) {
-        this.saldoVenda = saldoVenda;
-    }
+    public void setMatricula(String matricula){ this.matricula = matricula; }
 
+    public Date getDataContratacao(){ return dataContratacao; }
+
+    public void setDataContratacao(Date dataContratacao){ this.dataContratacao = dataContratacao; }
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -27,11 +30,18 @@ public class Vendedor extends Pessoa {
             return false;
         }
         Vendedor vendedor = (Vendedor) o;
-        return vendedor.getCpf().equalsIgnoreCase(getCpf());
+        return super.equals(vendedor) && vendedor.getMatricula().equalsIgnoreCase(getMatricula());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCpf(), getDataNasc(), getNome()) * 11;
+        return Objects.hash(getEmail(), getDataNasc()) * 11 * super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString() + " \n" + "Vendedor: " +
+                matricula + "\n" +
+                "Início de contrato em: " + dataContratacao;
     }
 }
