@@ -4,11 +4,11 @@ import Model.Cliente;
 
 import java.util.Set;
 
-public class ClienteController {
+public abstract class ClienteController {
     private static Set<Cliente> clientes;
 
 
-    public boolean cadastrarCliente(Cliente cliente){
+    public static boolean cadastrarCliente(Cliente cliente){
         if(cliente == null || clientes.equals(cliente)|| clientes.contains(cliente)){
             return false;
         }else{
@@ -16,7 +16,7 @@ public class ClienteController {
             return true;
         }
     }
-    public boolean removeCliente(Cliente cliente){
+    public static boolean removeCliente(Cliente cliente){
         if(clientes.contains(cliente) || clientes.equals(cliente)){
             clientes.remove(cliente);
             return true;
@@ -24,7 +24,7 @@ public class ClienteController {
             return false;
         }
     }
-    public Set<Cliente> listaCliente(){
+    public static Set<Cliente> listaCliente(){
 
         if(clientes.isEmpty()== true){
             clientes = null;
