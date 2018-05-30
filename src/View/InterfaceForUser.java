@@ -35,64 +35,60 @@ public abstract class InterfaceForUser {
             return n;
         }
     }
-    public static String tratarEntrada(int input){
-
+    public static int tratarEntrada(int input){
+        Scanner s = new Scanner(System.in);
         if(input==0){
-            return"\nVocê digitou um número inválido, por favor insira um valor valor correspondente a sua solicitação: ";
+
+            System.out.println("\nVocê digitou um número inválido, por favor insira um valor valor correspondente a sua solicitação: ");
+            do{
+                input = s.nextInt();
+            }while (input>9||input<1);
         }else{
-            return "\nOk, vamos continuar.";
+            System.out.println("\nOk, vamos continuar.");
         }
+        return input;
     }
     public static Date tratarDatas(int ano, int mes, int dia){
         Scanner s = new Scanner(System.in);
         do {
             dia = s.nextInt();
-            s.close();
         }while(dia>31 || dia<1);
-        System.out.println("/");
+        System.out.print("/");
         do {
             mes = s.nextInt();
-            s.close();
         }while(mes>12 || mes<1);
-        System.out.println("/");
+        System.out.print("/");
         do{
             ano = s.nextInt();
-            s.close();
-        }while(ano>2018);
+        }while(ano>2018|| ano<0);
 
         Date data = new Date(ano, mes, dia);
         return data;
     }
     public static void selecao(int input){
-        Scanner s = new Scanner(System.in);
         if(input==1){
 //CADASTRAR CLIENTES
+            Scanner s = new Scanner(System.in);
+
             System.out.println( "#########################################\n" +
                                 "          CADASTRANDO CLIENTE            \n" +
                                 "#########################################\n");
             System.out.print("Nome: ");
-            String nome = s.nextLine();
-            s.close();
+            String nome = s.next();
+            s.nextLine();
             System.out.print("\nE-mail: ");
             String email = s.nextLine();
-            s.close();
-
+            s.nextLine();
             System.out.print("\nData de nascimento: ");
-            int dia = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int mes = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int ano = s.nextInt();
-            s.close();
-            Date data = tratarDatas(ano, mes, dia);
+            int ano=-1, mes=0, dia=0;
+            Date data = tratarDatas( ano, mes, dia);
 
             System.out.println("\nAgora cadastraremos uma senha.\n");
             System.out.println("Insira uma senha: ");
             String senha = s.nextLine();
-            s.close();
+            s.nextLine();
             Cliente c = new Cliente(nome,email, senha, data);
+
             if(ClienteController.cadastrarCliente(c)==true){
                 ClienteController.cadastrarCliente(c);
                 System.out.println("Pronto, o cliente " + c.getNome() + " foi cadastrado com sucesso! ");
@@ -102,6 +98,7 @@ public abstract class InterfaceForUser {
 
         }else if (input == 2){
 //LISTA DE CLIENTES CADASTRADOS
+
             System.out.println( "#########################################\n" +
                                 "          CLIENTES CADASTRADOS           \n" +
                                 "#########################################\n");
@@ -112,42 +109,29 @@ public abstract class InterfaceForUser {
             }
         }else if (input == 3){
 //CADASTRAR VENDEDOR
+            Scanner s = new Scanner(System.in);
+
             System.out.println( "#########################################\n" +
                                 "          CADASTRANDO VENDEDOR           \n" +
                                 "#########################################\n");
             System.out.print("Nome: ");
             String nomeV = s.nextLine();
-            s.close();
-            System.out.print("\nE-mail: ");
+            s.nextLine();
+            System.out.print("E-mail: ");
             String emailV = s.nextLine();
-            s.close();
-
+            s.nextLine();
             System.out.print("\nData de nascimento: ");
-            int diaV = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int mesV = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int anoV = s.nextInt();
-            s.close();
+            int diaV = 0, mesV =0, anoV =0;
             Date dataV = tratarDatas(anoV, mesV, diaV);
 
             System.out.print("\nData de contratação: ");
-            int diaContrato = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int mesContrato = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int anoContrato = s.nextInt();
-            s.close();
+            int diaContrato = 0, mesContrato = 0, anoContrato =-1;
             Date dataContrato = tratarDatas(anoContrato, mesContrato, diaContrato);
 
             System.out.println("\nAgora cadastraremos uma senha.\n");
             System.out.println("Insira uma senha: ");
             String senhaVendedor = s.nextLine();
-            s.close();
+            s.nextLine();
             System.out.print("\n");
 
             Vendedor v = new Vendedor(nomeV, emailV,senhaVendedor, dataV, dataContrato);
@@ -160,6 +144,7 @@ public abstract class InterfaceForUser {
 
         }else if (input == 4){
 //LISTA DE VENDEDORES CADASTRADOS
+
             System.out.println( "#########################################\n" +
                                 "         VENDEDORES CADASTRADOS          \n" +
                                 "#########################################\n");
@@ -170,19 +155,22 @@ public abstract class InterfaceForUser {
             }
         }else if (input == 5){
 //CADASTRAR PRODUTOS
+            Scanner s = new Scanner(System.in);
+
             System.out.println( "#########################################\n" +
                                 "          CADASTRANDO PRODUTOS           \n" +
                                 "#########################################\n");
             System.out.print("Nome do produto: ");
             String nomeP = s.nextLine();
-            s.close();
+            s.nextLine();
             System.out.print("\nPreço do produto: R$");
             double preco = s.nextDouble();
-            s.close();
+            s.nextLine();
             System.out.print("\nPeso do produto: Kg");
             double peso = s.nextDouble();
-            s.close();
+            s.nextLine();
             System.out.print("\n");
+
             Produto p = new Produto(nomeP,preco,peso);
             if(ProdutoController.cadastrarProduto(p)){
                 ProdutoController.cadastrarProduto(p);
@@ -193,6 +181,7 @@ public abstract class InterfaceForUser {
 
         }else if (input == 6){
 //LISTA DE PRODUTOS
+
             System.out.println( "#########################################\n" +
                                 "            PRODUTOS LISTADOS            \n" +
                                 "#########################################\n");
@@ -204,31 +193,22 @@ public abstract class InterfaceForUser {
 
         }else if (input == 7){
 //REGISTRAR VENDAS
+            Scanner s = new Scanner(System.in);
+
             System.out.println( "#########################################\n" +
                                 "             REGISTRAR VENDA             \n" +
                                 "#########################################\n");
 
             System.out.print("Data da venda: ");
-            int diaVenda = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int mesVenda = s.nextInt();
-            s.close();
-            System.out.print("/");
-            int anoVenda = s.nextInt();
-            s.close();
+            int diaVenda = 0, mesVenda =0, anoVenda =-1;
             System.out.print("\nE-mail do vendedor responsável: ");
             String emailVend = s.nextLine();
-            s.close();
             System.out.print("\nProduto: ");
             String nomeProd = s.nextLine();
-            s.close();
             System.out.print("\nE-mail do cliente: ");
             String emailClient = s.nextLine();
-            s.close();
             System.out.println("\n Quantidade: ");
             int qtdVenda = s.nextInt();
-            s.close();
 
             Cliente c = ClienteController.buscaCliente(emailClient);
             Produto p = ProdutoController.buscaProduto(nomeProd);
@@ -239,6 +219,7 @@ public abstract class InterfaceForUser {
             Venda venda = new Venda(dataVenda,p,qtdVenda,c,v);
         }else if (input == 8){
 //RELATÓRIO DE VENDAS
+
             System.out.println( "#########################################\n" +
                                 "          RELATÓRIO DE VENDAS            \n" +
                                 "#########################################\n");

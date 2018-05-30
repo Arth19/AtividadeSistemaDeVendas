@@ -5,7 +5,7 @@ import Model.Cliente;
 import java.util.Set;
 
 public class ClienteController {
-    private static Set<Cliente> clientes;
+    private static Set<Cliente> clientes ;
 
 
     public static boolean cadastrarCliente(Cliente cliente){
