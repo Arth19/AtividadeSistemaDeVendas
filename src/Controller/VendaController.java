@@ -18,7 +18,8 @@ public class VendaController {
 
     public Set<Venda> relatorioVendas(){
         if(vendas.isEmpty()==true){
-            return null;
+            vendas = null;
+            return vendas;
         }else {
             return vendas;
         }
