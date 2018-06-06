@@ -2,10 +2,12 @@ package Controller;
 
 import Model.Cliente;
 
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ClienteController {
-    private static Set<Cliente> clientes ;
+
+    private static List<Cliente> clientes = new ArrayList<>();
 
 
     public static boolean cadastrarCliente(Cliente cliente){
@@ -24,7 +26,7 @@ public class ClienteController {
             return false;
         }
     }
-    public static Set<Cliente> listaCliente(){
+    public static List<Cliente> listaCliente(){
 
         if(clientes.isEmpty()== true){
             clientes = null;

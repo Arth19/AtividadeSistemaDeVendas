@@ -2,10 +2,11 @@ package Controller;
 
 import Model.Produto;
 
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ProdutoController {
-    private static Set<Produto> produtos;
+    private static List<Produto> produtos = new ArrayList<>();
 
     public static boolean cadastrarProduto(Produto p){
         if(p==null || produtos.contains(p) || produtos.equals(p)){
@@ -30,7 +31,7 @@ public class ProdutoController {
         }
 
     }
-    public static Set<Produto> listarProdutos(){
+    public static List<Produto> listarProdutos(){
         if(produtos.isEmpty() == true){
             produtos = null;
             return produtos;

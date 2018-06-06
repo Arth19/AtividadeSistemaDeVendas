@@ -11,7 +11,7 @@ import Model.Vendedor;
 import java.util.Date;
 import java.util.Scanner;
 import java.lang.*;
-import java.util.Set;
+import java.util.List;
 
 public abstract class InterfaceForUser {
     public static String mostraMenu(){
@@ -102,7 +102,7 @@ public abstract class InterfaceForUser {
             System.out.println( "#########################################\n" +
                                 "          CLIENTES CADASTRADOS           \n" +
                                 "#########################################\n");
-            Set<Cliente> clientes = ClienteController.listaCliente();
+            List<Cliente> clientes = ClienteController.listaCliente();
             for(Cliente c: clientes){
                 System.out.println("#######################################");
                 System.out.println(c.toString());
@@ -135,7 +135,7 @@ public abstract class InterfaceForUser {
             System.out.print("\n");
 
             Vendedor v = new Vendedor(nomeV, emailV,senhaVendedor, dataV, dataContrato);
-            if(VendedorController.cadastraVendedor(v)==true){
+            if(v.equals(null)==false){
                 VendedorController.cadastraVendedor(v);
                 System.out.println("\n\n Pronto, o vendedor " +v.getNome()+" foi cadastrado com sucesso.");
             }else{
@@ -148,7 +148,7 @@ public abstract class InterfaceForUser {
             System.out.println( "#########################################\n" +
                                 "         VENDEDORES CADASTRADOS          \n" +
                                 "#########################################\n");
-            Set<Vendedor> vendedores = VendedorController.listaVendedores();
+            List<Vendedor> vendedores = VendedorController.listaVendedores();
             for(Vendedor v: vendedores){
                 System.out.println("##########################################");
                 System.out.println(v.toString());
@@ -185,7 +185,7 @@ public abstract class InterfaceForUser {
             System.out.println( "#########################################\n" +
                                 "            PRODUTOS LISTADOS            \n" +
                                 "#########################################\n");
-            Set<Produto> produtos = ProdutoController.listarProdutos();
+            List<Produto> produtos = ProdutoController.listarProdutos();
             for(Produto p: produtos){
                 System.out.println("###########################################");
                 System.out.println(p.toString());
@@ -223,7 +223,7 @@ public abstract class InterfaceForUser {
             System.out.println( "#########################################\n" +
                                 "          RELATÓRIO DE VENDAS            \n" +
                                 "#########################################\n");
-            Set<Venda> vendas = VendaController.relatorioVendas();
+            List<Venda> vendas = VendaController.relatorioVendas();
             for (Venda v: vendas){
                 System.out.println("######################################");
                 System.out.println(v.toString());

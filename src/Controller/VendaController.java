@@ -2,10 +2,11 @@ package Controller;
 
 import Model.Venda;
 
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class VendaController {
-    private static Set<Venda> vendas;
+    private static List<Venda> vendas;
 
     public static boolean registrarVenda(Venda v){
         if (v==null || vendas.contains(v) || vendas.equals(v)){
@@ -16,7 +17,7 @@ public class VendaController {
         }
     }
 
-    public static Set<Venda> relatorioVendas(){
+    public static List<Venda> relatorioVendas(){
         if(vendas.isEmpty()==true){
             vendas = null;
             return vendas;

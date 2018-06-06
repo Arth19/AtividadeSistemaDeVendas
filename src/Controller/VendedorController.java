@@ -1,14 +1,16 @@
 package Controller;
 
 import Model.Vendedor;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class VendedorController {
-    private static Set<Vendedor> vendedores;
+    private static List<Vendedor> vendedores = new ArrayList<>();
 
     public static boolean cadastraVendedor(Vendedor v){
-        if(v == null ||  vendedores.contains(v)){
+        if(vendedores.contains(v)){
+
             return false;
         }else{
             vendedores.add(v);
@@ -24,13 +26,13 @@ public class VendedorController {
         }
     }
 
-    public static Set<Vendedor> listaVendedores(){
-        if(vendedores.isEmpty()==true){
+    public static List<Vendedor> listaVendedores(){
+//        if(vendedores.isEmpty()==true){
             vendedores = null;
+  //          return vendedores;
+    //    } else{
             return vendedores;
-        } else{
-            return vendedores;
-        }
+      //  }
     }
 
     public static Vendedor buscaVendedor(String emailVend) {
